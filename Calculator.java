@@ -7,7 +7,9 @@ public class Calculator {
 
         Scanner input = new Scanner(System.in);
 
+        System.out.print("Enter first number: ");
         int num1 = input.nextInt();
+        System.out.print("Enter second number: ");
         int num2 = input.nextInt();
 
 
@@ -38,17 +40,17 @@ public class Calculator {
         input.close();
     }
 
-    public  static void menudisplay(){
+    public static void menudisplay(){
         System.out.println("1. Addition");
         System.out.println("2. Subtraction");
         System.out.println("3. Multiply");
-        System.out.println("4. Integer Division");
+        System.out.println("4. Integer Division\n");
         
     }
 
 
     public static void addition (int num1, int num2){
-        System.out.println("Performing Addition: ");
+        System.out.println("Performing Addition: \n");
 
         int add = num1 + num2;
         System.out.printf("The Addition of %d and %d is: %d \n", num1, num2, add);
@@ -56,7 +58,7 @@ public class Calculator {
     }
 
     public static void subtraction (int num1, int num2){
-        System.out.println("Performing Subtraction: ");
+        System.out.println("Performing Subtraction: \n");
 
         int sub = num1-num2;
         System.out.printf("The Subtraction of %d and %d is: %d \n", num1, num2, sub);
@@ -64,7 +66,7 @@ public class Calculator {
     }
 
     public static void multiplication(int num1, int num2){
-        System.out.println("Perfroming Multiplication: ");
+        System.out.println("Perfroming Multiplication: \n");
 
         int mul = num1 * num2;
         System.out.printf("The Multiplication of %d and %d is: %d \n", num1, num2, mul);
@@ -73,11 +75,21 @@ public class Calculator {
     }
 
     public static void division(int num1, int num2){
-        
-        System.out.println("Performing Integer Division: ");
 
-        int div = num1 / num2;
-        System.out.printf("The Integer Division of %d and %d is: %d \n", num1, num2, div);
+        if(num2 == 0){
+            System.out.println(" Error! Numerator must be grater than zero");
+        }
+        
+        else{
+
+            System.out.println("Performing Integer Division: \n");
+
+            int div = num1 / num2;
+            System.out.printf("The Integer Division of %d and %d is: %d \n", num1, num2, div);
+        }
+            
+
+        
         
     }
 }
