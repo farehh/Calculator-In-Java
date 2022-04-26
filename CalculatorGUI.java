@@ -28,6 +28,9 @@ public class CalculatorGUI {
         frame.pack();
         frame.setVisible(true);
         frame.setTitle("Lumber 1 Cal.");
+        //JButton.setFocusable(false);
+
+
 
     }
 }
