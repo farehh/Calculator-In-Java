@@ -1,148 +1,94 @@
-import java.util.Scanner;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
+public class Calculator implements ActionListener{
+    JFrame frame;
+    JTextField textfield;
+    JPanel panel;
 
-public class Calculator {
-    public static void main(String[] args) {
+    JButton[] numButtons = new JButton[10];
+    JButton addButton, subButton, mulButton, divButton, decButton, equButton;
 
-        System.out.println("\nCalculator\n");
+    double num1 = 0;
+    double num2 = 0;
+    double result = 0;
+    char operator;
 
-        Scanner input = new Scanner(System.in);
+    Calculator(){
 
-        System.out.print("Enter first number: ");
-        int num1 = input.nextInt();
-
-        System.out.print("Enter second number: ");
-        int num2 = input.nextInt();
-
-
-        menudisplay();
+        frame = new JFrame("Calculator");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 500 );
+        //frame.setLayout(null);
+        //frame.getContentPane().setBackground( Color.GRAY );
         
-        String checkstring = input.next();
-
-        char choice = checkstring.charAt(0);
-
-
-        if (choice == '1'){
-            addition(num1, num2);
-        }
-
-        if (choice == '2'){
-            subtraction(num1, num2);
-        }
-
-        if (choice == '3'){
-            multiplication(num1, num2);
-    
-        }
-
-        if (choice == '4'){
-            division(num1, num2);
-        }
+        //frame.setResizable(false);
         
-        if(choice == '5'){
-            exponential(num1, num2);
-        }
-
-        if (choice  == '6'){
-            percent(num1, num2);
-        }
-
-        if (choice == '7'){
-            degree(num1, num2);
-        }
-
-        if (choice == '8'){
-            radian(num1, num2);
-        }
-        input.close();
-    }
-
-    public static void menudisplay(){
-        System.out.println("1. Addition");
-        System.out.println("2. Subtraction");
-        System.out.println("3. Multiply");
-        System.out.println("4. Integer Division\n");
-        
-    }
-
-    //1
-    public static void addition (int num1, int num2){
-        System.out.println("Performing Addition: \n");
-
-        int add = num1 + num2;
-        System.out.printf("The Addition of %d and %d is: %d \n", num1, num2, add);
-        
-    }
-
-    //2
-    public static void subtraction (int num1, int num2){
-        System.out.println("Performing Subtraction: \n");
-
-        int sub = num1-num2;
-        System.out.printf("The Subtraction of %d and %d is: %d \n", num1, num2, sub);
-
-    }
-
-    //3
-    public static void multiplication(int num1, int num2){
-        System.out.println("Perfroming Multiplication: \n");
-
-        int mul = num1 * num2;
-        System.out.printf("The Multiplication of %d and %d is: %d \n", num1, num2, mul);
         
 
-    }
-
-
-    //4
-    public static void division(int num1, int num2){
-
-        if(num2 == 0){
-            System.out.println(" Error! Numerator must be grater than zero");
-        }
         
-        else{
+        textfield = new JTextField();
+        textfield.setEditable(true);
+        textfield.setBounds(50,25,300,50);
 
-            System.out.println("Performing Integer Division: \n");
 
-            int div = num1 / num2;
-            System.out.printf("The Integer Division of %d and %d is: %d \n", num1, num2, div);
-        }
+        addButton = new JButton("+");
+		subButton = new JButton("-");
+		mulButton = new JButton("*");
+		divButton = new JButton("/");
+		decButton = new JButton(".");
+		equButton = new JButton("=");
+
+
+        for (int i = 0; i < numButtons.length; i++) {
+            numButtons[i] = new JButton(String.valueOf(i));
+            numButtons[i].addActionListener(this);
+            //numButtons[i].setFocusable(false);
+            //numButtons[i].repaint();
+
             
-    }
-
-    //5
-    public static void exponential (int num1,int num2){
-
-        System.out.println("Find power to the integer!");
-
-        int exp = (int) Math.pow(num1, num2);
-
-        System.out.printf("%d raised to power %d is: %d \n", num1,num2,exp);
-
-    }
+        }
 
 
-    //6
-    public static void percent(int num1, int num2){
-        System.out.println("Calculating Percentage: \n");
+        panel = new JPanel();
+        //panel.setBounds(50,100,300,300);
+        panel.setLayout(new GridLayout(4,4,5,5));
+        panel.setBackground(Color.gray);
+
+		panel.add(numButtons[2]);
+		panel.add(numButtons[3]);
+		panel.add(addButton);
+		panel.add(numButtons[4]);
+		panel.add(numButtons[5]);
+		panel.add(numButtons[6]);
+		panel.add(subButton);
+		panel.add(numButtons[7]);
+		panel.add(numButtons[8]);
+		panel.add(numButtons[9]);
+		panel.add(mulButton);
+		panel.add(decButton);
+		panel.add(numButtons[0]);
+		panel.add(equButton);
+		panel.add(divButton);
+
+        frame.add(panel);
+        frame.add(textfield);
         
+        //frame.pack();
+        frame.setVisible(true);
 
 
     }
 
-
-    //7
-    public static void degree(int num1, int num2){
-
-    }
-
-
-    //8
-    public static void radian(int num1, int num2){
-
+    public static void main(String[] args) {
+        Calculator calc = new Calculator();
 
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e){
+
+    }
 
 }
