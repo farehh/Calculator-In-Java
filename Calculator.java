@@ -28,9 +28,9 @@ public class Calculator implements ActionListener{
         
 
         
-        textfield = new JTextField();
-        textfield.setEditable(true);
-        textfield.setBounds(50,25,300,50);
+        // textfield = new JTextField();
+        // textfield.setEditable(true);
+        // textfield.setBounds(100,0,300,100);
 
 
         addButton = new JButton("+");
@@ -52,10 +52,13 @@ public class Calculator implements ActionListener{
 
 
         panel = new JPanel();
-        //panel.setBounds(50,100,300,300);
+        panel.setBounds(50,100,300,300);
         panel.setLayout(new GridLayout(4,4,5,5));
         panel.setBackground(Color.gray);
 
+
+
+        // adding elements to panel
 		panel.add(numButtons[2]);
 		panel.add(numButtons[3]);
 		panel.add(addButton);
@@ -72,17 +75,20 @@ public class Calculator implements ActionListener{
 		panel.add(equButton);
 		panel.add(divButton);
 
+
+        //adding elements to frame
+
         frame.add(panel);
-        frame.add(textfield);
+        //frame.add(textfield);
         
-        //frame.pack();
+        
         frame.setVisible(true);
 
 
     }
 
     public static void main(String[] args) {
-        Calculator calc = new Calculator();
+        Calculator calc = new Calculator(); // creating object 
 
     }
 
