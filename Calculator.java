@@ -28,9 +28,9 @@ public class Calculator implements ActionListener{
         
 
         
-        // textfield = new JTextField();
-        // textfield.setEditable(true);
-        // textfield.setBounds(100,0,300,100);
+        textfield = new JTextField();
+        textfield.setEditable(true);
+        textfield.setBounds(0,0,300,100);
 
 
         addButton = new JButton("+");
@@ -52,7 +52,7 @@ public class Calculator implements ActionListener{
 
 
         panel = new JPanel();
-        panel.setBounds(50,100,300,300);
+        panel.setBounds(25,100,100,100);
         panel.setLayout(new GridLayout(4,4,5,5));
         panel.setBackground(Color.gray);
 
@@ -94,7 +94,7 @@ public class Calculator implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e){
-
+        // adding action listeners here.
     }
 
 }
