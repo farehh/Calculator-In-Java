@@ -8,7 +8,11 @@ public class Calculator implements ActionListener{
     JPanel panel;
 
     JButton[] numButtons = new JButton[10];
+
     JButton addButton, subButton, mulButton, divButton, decButton, equButton;
+
+    Font font= new Font("Courier", Font.BOLD, 20);
+
 
     double num1 = 0;
     double num2 = 0;
@@ -19,18 +23,21 @@ public class Calculator implements ActionListener{
 
         frame = new JFrame("Calculator");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 500 );
-        //frame.setLayout(null);
-        //frame.getContentPane().setBackground( Color.GRAY );
-        
-        //frame.setResizable(false);
-        
-        
-
+        frame.setSize(400, 550 );
+        frame.getContentPane().setBackground(Color.DARK_GRAY);
+        //frame.setBackground(Color.GRAY);
+        frame.setLayout(null);
         
         textfield = new JTextField();
         textfield.setEditable(true);
-        textfield.setBounds(0,0,300,100);
+        textfield.setBounds(50,25,300,50);
+        textfield.setBorder(null);
+        textfield.setVisible(true);
+        textfield.setBackground(Color.DARK_GRAY);
+        textfield.setForeground(Color.WHITE);
+        textfield.setFont(font);
+
+
 
 
         addButton = new JButton("+");
@@ -40,21 +47,38 @@ public class Calculator implements ActionListener{
 		decButton = new JButton(".");
 		equButton = new JButton("=");
 
+        addButton.setBackground(Color.DARK_GRAY);
+        subButton.setBackground(Color.DARK_GRAY);
+        mulButton.setBackground(Color.DARK_GRAY);
+        divButton.setBackground(Color.DARK_GRAY);
+        decButton.setBackground(Color.DARK_GRAY);
+        equButton.setBackground(Color.DARK_GRAY);
+
+        addButton.setForeground(Color.WHITE);
+        subButton.setForeground(Color.WHITE);
+        mulButton.setForeground(Color.WHITE);
+        divButton.setForeground(Color.WHITE);
+        decButton.setForeground(Color.WHITE);
+        equButton.setForeground(Color.WHITE);
 
         for (int i = 0; i < numButtons.length; i++) {
             numButtons[i] = new JButton(String.valueOf(i));
             numButtons[i].addActionListener(this);
-            //numButtons[i].setFocusable(false);
-            //numButtons[i].repaint();
-
-            
+            numButtons[i].setFont(font);
+            numButtons[i].setFocusable(false);
+            numButtons[i].setBackground(Color.DARK_GRAY);
+            numButtons[i].setForeground(Color.WHITE);
+            //numButtons[i].setBorder(null);
+        
         }
 
 
         panel = new JPanel();
-        panel.setBounds(25,100,100,100);
-        panel.setLayout(new GridLayout(4,4,5,5));
-        panel.setBackground(Color.gray);
+        panel.setBounds(5,100,370,420);
+        panel.setLayout(new GridLayout(4,4,-1,-1));
+        panel.setBackground(Color.DARK_GRAY);
+        panel.setBorder(null);
+        panel.setForeground(Color.WHITE);
 
 
 
@@ -80,10 +104,9 @@ public class Calculator implements ActionListener{
         //adding elements to frame
 
         frame.add(panel);
-        //frame.add(textfield);
-        
-        
+        frame.add(textfield);
         frame.setVisible(true);
+        
 
 
     }
