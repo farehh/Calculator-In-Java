@@ -6,12 +6,13 @@ public class Calculator implements ActionListener{
     JFrame frame;
     JTextField textfield;
     JPanel panel;
+    ButtonGroup numbers = new ButtonGroup();
 
-    JButton[] numButtons = new JButton[10];
+    button[] numButtons = new button[16];
 
-    JButton addButton, subButton, mulButton, divButton, decButton, equButton;
-    JButton aButton, bButton, cButton, dButton, eButton, fButton;
-    JButton clrButton;
+    button addButton, subButton, mulButton, divButton, decButton, equButton;
+    button aButton, bButton, cButton, dButton, eButton, fButton;
+    button clrButton;
 
     Font font= new Font("Courier", Font.BOLD, 20);
 
@@ -24,108 +25,75 @@ public class Calculator implements ActionListener{
     Calculator(){
 
         frame = new JFrame("Calculator");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 550 );
-        frame.getContentPane().setBackground(Color.DARK_GRAY);
-        //frame.setBackground(Color.GRAY);
-        frame.setLayout(null);
         
         textfield = new JTextField();
-        textfield.setEditable(true);
+        textfield.setEditable(false);
         textfield.setBounds(50,25,300,50);
         textfield.setBorder(null);
         textfield.setVisible(true);
-        textfield.setBackground(Color.DARK_GRAY);
+        // textfield.setBackground(Color.DARK_GRAY);
         textfield.setForeground(Color.WHITE);
         textfield.setFont(font);
+        textfield.setOpaque(false);
 
 
-        addButton = new JButton("+");
-		subButton = new JButton("-");
-		mulButton = new JButton("*");
-		divButton = new JButton("/");
-		decButton = new JButton(".");
-		equButton = new JButton("=");
 
-        aButton = new JButton("A");
-        bButton = new JButton("B");
-        cButton = new JButton("C");
-        dButton = new JButton("D");
-        eButton = new JButton("E");
-        fButton = new JButton("F");
-        clrButton = new JButton("⌫");
-
-        addButton.setBackground(Color.DARK_GRAY);
-        subButton.setBackground(Color.DARK_GRAY);
-        mulButton.setBackground(Color.DARK_GRAY);
-        divButton.setBackground(Color.DARK_GRAY);
-        decButton.setBackground(Color.DARK_GRAY);
-        equButton.setBackground(Color.DARK_GRAY);
-
-        aButton.setBackground(Color.DARK_GRAY);
-        bButton.setBackground(Color.DARK_GRAY);
-        cButton.setBackground(Color.DARK_GRAY);
-        dButton.setBackground(Color.DARK_GRAY);
-        eButton.setBackground(Color.DARK_GRAY);
-        fButton.setBackground(Color.DARK_GRAY);
-        clrButton.setBackground(Color.DARK_GRAY);
-        equButton.setBackground(Color.DARK_GRAY);
-
-        addButton.setForeground(Color.WHITE);
-        subButton.setForeground(Color.WHITE);
-        mulButton.setForeground(Color.WHITE);
-        divButton.setForeground(Color.WHITE);
-        decButton.setForeground(Color.WHITE);
-        equButton.setForeground(Color.WHITE);
-
-        aButton.setForeground(Color.WHITE);
-        bButton.setForeground(Color.WHITE);
-        cButton.setForeground(Color.WHITE);
-        dButton.setForeground(Color.WHITE);
-        eButton.setForeground(Color.WHITE);
-        fButton.setForeground(Color.WHITE);
-        clrButton.setForeground(Color.WHITE);
-        equButton.setForeground(Color.WHITE);
-
+        addButton = new button("+");
+		subButton = new button("-");
+		mulButton = new button("*");
+		divButton = new button("/");
+		decButton = new button(".");
+		equButton = new button("=");
+        clrButton = new button("⌫");
 
         for (int i = 0; i < numButtons.length; i++) {
-            numButtons[i] = new JButton(String.valueOf(i));
+            numButtons[i] = new button(Integer.toHexString(i));
             numButtons[i].addActionListener(this);
-            numButtons[i].setFont(font);
-            numButtons[i].setFocusable(false);
-            numButtons[i].setBackground(Color.DARK_GRAY);
-            numButtons[i].setForeground(Color.WHITE);
-            //numButtons[i].setBorder(null);
-        
+            numButtons[i].setActionCommand(Integer.toString(i));  
+            numbers.add(numButtons[i]);
         }
 
 
         panel = new JPanel();
         panel.setBounds(5,100,370,420);
-        panel.setLayout(new GridLayout(4,5,-1,-1));
-        panel.setBackground(Color.DARK_GRAY);
+        panel.setLayout(new GridLayout(5,6,0,0));
+        // panel.setBackground(Color.DARK_GRAY);
         panel.setBorder(null);
         panel.setForeground(Color.WHITE);
-
+        panel.setOpaque(false);
 
 
         // adding elements to panel
-        panel.add(aButton);
+        panel.add(numButtons[13]);
+        panel.add(numButtons[14]);
+        panel.add(numButtons[15]);
+        
+        panel.add(numButtons[10]);
+        panel.add(numButtons[11]);
+        panel.add(numButtons[12]);
+
+		panel.add(numButtons[7]);
+		panel.add(numButtons[8]);
+		panel.add(numButtons[9]);
+
+
+		panel.add(numButtons[4]);
+		panel.add(numButtons[5]);
+		panel.add(numButtons[6]);
+
         panel.add(numButtons[1]);
 		panel.add(numButtons[2]);
 		panel.add(numButtons[3]);
         panel.add(clrButton);
-        panel.add(bButton);
-		panel.add(numButtons[4]);
-		panel.add(numButtons[5]);
-		panel.add(numButtons[6]);
+
+        
+
 		panel.add(mulButton);
-        panel.add(cButton);
-		panel.add(numButtons[7]);
-		panel.add(numButtons[8]);
-		panel.add(numButtons[9]);
-		panel.add(subButton);
-        panel.add(dButton);
+
+
+		
+        panel.add(subButton);
+        panel.add(numButtons[13]);
 		panel.add(decButton);
 		panel.add(numButtons[0]);
 		panel.add(equButton);
@@ -137,7 +105,16 @@ public class Calculator implements ActionListener{
 
         frame.add(panel);
         frame.add(textfield);
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 550 );
+        frame.getContentPane().setBackground(Color.DARK_GRAY);
+        //frame.setBackground(Color.GRAY);
+        frame.setLayout(null);
         frame.setVisible(true);
+        // frame.pack();
+        frame.setResizable(false);
+
         
 
 
@@ -151,6 +128,27 @@ public class Calculator implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e){
         // adding action listeners here.
+        for (int i = 0; i < numButtons.length; i++) {
+            if (e.getSource() == numButtons[i]) {
+                textfield.setText(textfield.getText().concat(numButtons[i].getText()));
+            } 
+        }
+       
+        if (e.getSource() == clrButton) {
+            
+        } 
+
+        
+
+        if (e.getActionCommand().equals("sin")){
+
+        } if (e.getActionCommand().equals("sinh")){
+
+        } if (e.getActionCommand().equals("asin")){
+
+        }if (e.getActionCommand().equals("asinh")){
+
+        }
     }
 
 }
