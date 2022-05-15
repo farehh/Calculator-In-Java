@@ -14,13 +14,27 @@ public class Calculator implements ActionListener{
     button aButton, bButton, cButton, dButton, eButton, fButton;
     button clrButton;
 
+    button sin, cos , tan , cosec, cot, sec;
+    button asin, acos, atan, acosec, acot, asec;
+    button sinh, cosh, tanh, cosech, coth, sech;
+    button asinh, acosh, atanh, acosech, acoth, asech;
+    button log, exp, rad, deg;
+    button abs, fact, square, sqrt, cube;
+
+    ButtonGroup numbase;
+    JRadioButton decimal;
+    JRadioButton octal;
+    JRadioButton hexa;
+    JRadioButton binary;
+
+    ButtonGroup datatype;
+    JRadioButton int_type;
+    JRadioButton float_type;
+    JRadioButton double_type;
+    JRadioButton long_type;
+
+
     Font font= new Font("Courier", Font.BOLD, 20);
-
-
-    double num1 = 0;
-    double num2 = 0;
-    double result = 0;
-    char operator;
 
     Calculator(){
 
@@ -28,13 +42,76 @@ public class Calculator implements ActionListener{
         
         textfield = new JTextField();
         textfield.setEditable(false);
-        textfield.setBounds(50,25,300,50);
+        textfield.setBounds(50,25,600,50);
         textfield.setBorder(null);
         textfield.setVisible(true);
-        // textfield.setBackground(Color.DARK_GRAY);
+        textfield.setBackground(Color.DARK_GRAY);
         textfield.setForeground(Color.WHITE);
         textfield.setFont(font);
-        textfield.setOpaque(false);
+
+        JRadioButton decimal = new JRadioButton("Decimal", true);
+        decimal.setBounds(53, 110, 80, 30);
+        decimal.setFocusable(false);
+        decimal.addActionListener(this);
+        decimal.setActionCommand("Decimal");
+
+        JRadioButton octal= new JRadioButton("Octal");
+        octal.setBounds(203,110,60,30);
+        octal.setFocusable(false);
+        octal.addActionListener(this);
+        octal.setActionCommand("Octal");
+
+        JRadioButton binary= new JRadioButton("Binary");
+        binary.setBounds(353,110,70,30);
+        binary.setFocusable(false);
+        binary.addActionListener(this);
+        binary.setActionCommand("Binary");
+
+        JRadioButton hexadecimal= new JRadioButton("Hexadecimal");
+        hexadecimal.setBounds(503,110,110,30);
+        hexadecimal.setFocusable(false);
+        hexadecimal.addActionListener(this);
+        hexadecimal.setActionCommand("HexaDecimal");
+
+        ButtonGroup numbase = new ButtonGroup();
+        numbase.add(decimal);
+        numbase.add(octal);
+        numbase.add(binary);
+        numbase.add(hexadecimal);
+
+
+        JRadioButton int_type = new JRadioButton("Integer",true);
+        int_type.setBounds(53,160,80,30);
+        int_type.setFocusable(false);
+        int_type.addActionListener(this);
+        int_type.setActionCommand("Integer");
+
+        JRadioButton float_type = new JRadioButton("Float");
+        float_type.setBounds(203,160,60,30);
+        float_type.setFocusable(false);
+        float_type.addActionListener(this);
+        float_type.setActionCommand("Float");
+
+        JRadioButton double_type = new JRadioButton("Double");
+        double_type.setBounds(353,160,70,30);
+        double_type.setFocusable(false);
+        double_type.addActionListener(this);
+        double_type.setActionCommand("Double");
+
+        JRadioButton long_type = new JRadioButton("Long");
+        long_type.setBounds(503,160,110,30);
+        long_type.setFocusable(false);
+        long_type.addActionListener(this);
+        double_type.setActionCommand("Long");
+
+        ButtonGroup datatype = new ButtonGroup();
+        datatype.add(int_type);
+        datatype.add(float_type);
+        datatype.add(double_type);
+        datatype.add(long_type);
+
+
+
 
 
 
@@ -49,7 +126,7 @@ public class Calculator implements ActionListener{
         for (int i = 0; i < numButtons.length; i++) {
             numButtons[i] = new button(Integer.toHexString(i));
             numButtons[i].addActionListener(this);
-            numButtons[i].setActionCommand(Integer.toString(i));  
+            numButtons[i].setActionCommand(((Integer.toString(i)).toUpperCase()));  
             numbers.add(numButtons[i]);
         }
 
@@ -57,7 +134,7 @@ public class Calculator implements ActionListener{
         panel = new JPanel();
         panel.setBounds(5,100,370,420);
         panel.setLayout(new GridLayout(5,6,0,0));
-        // panel.setBackground(Color.DARK_GRAY);
+        panel.setBackground(Color.DARK_GRAY);
         panel.setBorder(null);
         panel.setForeground(Color.WHITE);
         panel.setOpaque(false);
@@ -107,13 +184,13 @@ public class Calculator implements ActionListener{
         frame.add(textfield);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 550 );
+        frame.setSize(700, 750 );
         frame.getContentPane().setBackground(Color.DARK_GRAY);
-        //frame.setBackground(Color.GRAY);
         frame.setLayout(null);
         frame.setVisible(true);
-        // frame.pack();
         frame.setResizable(false);
+
+
 
         
 
