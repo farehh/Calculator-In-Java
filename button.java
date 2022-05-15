@@ -1,7 +1,5 @@
 import java.awt.Color;
 import java.awt.*;
-
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
 public class button extends JButton{
@@ -13,7 +11,6 @@ public class button extends JButton{
         setForeground(Color.WHITE);
         setFocusable(false);
         setFont(font);
-        setOpaque(false);
 
 
         
