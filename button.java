@@ -3,7 +3,7 @@ import java.awt.*;
 import javax.swing.JButton;
 
 public class Button extends JButton{
-    Font font= new Font("Courier", Font.BOLD, 20);
+    Font font= new Font("Courier", Font.BOLD, 21);
 
     Button(String text){
         setText(text);
