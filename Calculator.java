@@ -29,16 +29,18 @@ public class Calculator implements ActionListener{
     Button absButton, factButton, squareButton, sqrtButton, cubeButton, modButton;
 
     ButtonGroup numbase;
-    JRadioButton decimal;
-    JRadioButton octal;
-    JRadioButton hexadecimal;
-    JRadioButton binary;
+    RadioButtons decimal;
+    RadioButtons octal;
+    RadioButtons hexadecimal;
+    RadioButtons binary;
 
     ButtonGroup datatype;
-    JRadioButton int_type;
-    JRadioButton float_type;
-    JRadioButton double_type;
-    JRadioButton long_type;
+    RadioButtons int_type;
+    RadioButtons float_type;
+    RadioButtons double_type;
+    RadioButtons long_type;
+    RadioButtons byte_type;
+    RadioButtons short_type;
 
     double num1 = 0, num2 = 0, result = 0;
     char operator;
@@ -59,29 +61,33 @@ public class Calculator implements ActionListener{
         textfield.setForeground(Color.WHITE);
         textfield.setFont(font);
 
-        decimal = new JRadioButton("Decimal", true);
+        decimal = new RadioButtons("Decimal");
         decimal.setBounds(53, 110, 80, 30);
         decimal.setFocusable(false);
         decimal.addActionListener(this);
         decimal.setActionCommand("Decimal");
+        decimal.setBackground(Color.DARK_GRAY);
 
-        octal = new JRadioButton("Octal");
+        octal = new RadioButtons("Octal");
         octal.setBounds(203,110,60,30);
         octal.setFocusable(false);
         octal.addActionListener(this);
         octal.setActionCommand("Octal");
+        octal.setBackground(Color.DARK_GRAY);
 
-        binary = new JRadioButton("Binary");
+        binary = new RadioButtons("Binary");
         binary.setBounds(353,110,70,30);
         binary.setFocusable(false);
         binary.addActionListener(this);
         binary.setActionCommand("Binary");
+        binary.setBackground(Color.DARK_GRAY);
 
-        hexadecimal = new JRadioButton("Hexadecimal");
+        hexadecimal = new RadioButtons("Hexadecimal");
         hexadecimal.setBounds(503,110,110,30);
         hexadecimal.setFocusable(false);
         hexadecimal.addActionListener(this);
         hexadecimal.setActionCommand("HexaDecimal");
+        hexadecimal.setBackground(Color.DARK_GRAY);
 
         numbase = new ButtonGroup();
         numbase.add(decimal);
@@ -89,30 +95,41 @@ public class Calculator implements ActionListener{
         numbase.add(binary);
         numbase.add(hexadecimal);
 
+        byte_type = new RadioButtons("Byte");
+        byte_type.setBounds(53,160,60,30);
+        byte_type.setFocusable(false);
+        byte_type.addActionListener(this);
+        byte_type.setActionCommand("Byte");
 
-        int_type = new JRadioButton("Integer", true);
-        int_type.setBounds(53,160,80,30);
+        short_type = new RadioButtons("Short");
+        short_type.setBounds(128,160,80,30);
+        short_type.setFocusable(false);
+        short_type.addActionListener(this);
+        short_type.setActionCommand("Short");
+
+        int_type = new RadioButtons("Integer");
+        int_type.setBounds(230,160,80,30);
         int_type.setFocusable(false);
         int_type.addActionListener(this);
         int_type.setActionCommand("Integer");
         int_type.setBackground(Color.DARK_GRAY);
 
-        float_type = new JRadioButton("Float");
-        float_type.setBounds(203,160,60,30);
+        float_type = new RadioButtons("Float");
+        float_type.setBounds(433,160,60,30);
         float_type.setFocusable(false);
         float_type.addActionListener(this);
         float_type.setActionCommand("Float");
         float_type.setBackground(Color.DARK_GRAY);
 
-        double_type = new JRadioButton("Double");
-        double_type.setBounds(353,160,70,30);
+        double_type = new RadioButtons("Double");
+        double_type.setBounds(513,160,70,30);
         double_type.setFocusable(false);
         double_type.addActionListener(this);
         double_type.setActionCommand("Double");
         double_type.setBackground(Color.DARK_GRAY);
 
-        long_type = new JRadioButton("Long");
-        long_type.setBounds(503,160,110,30);
+        long_type = new RadioButtons("Long");
+        long_type.setBounds(333,160,70,30);
         long_type.setFocusable(false);
         long_type.addActionListener(this);
         long_type.setActionCommand("Long");
@@ -124,6 +141,8 @@ public class Calculator implements ActionListener{
         datatype.add(float_type);
         datatype.add(double_type);
         datatype.add(long_type);
+        datatype.add(short_type);
+        datatype.add(byte_type);
     
 
 
@@ -150,7 +169,7 @@ public class Calculator implements ActionListener{
 
 
         for (int i = 0; i < numButtons.length; i++) {
-            numButtons[i] = new Button(Integer.toHexString(i));
+            numButtons[i] = new Button(Long.toHexString(i).toUpperCase());
             numButtons[i].addActionListener(this);
             numButtons[i].setActionCommand(((Integer.toString(i))));  
             
@@ -268,60 +287,59 @@ public class Calculator implements ActionListener{
         panel.add(numButtons[1]);
         panel.add(numButtons[2]);
         panel.add(numButtons[3]);
-        panel.add(numButtons[10]);
-        panel.add(numButtons[11]);
+        panel.add(addButton);
+        panel.add(subButton);
         panel.add(numButtons[4]);
         panel.add(numButtons[5]);
         panel.add(numButtons[6]);
-        panel.add(numButtons[12]);
-        panel.add(numButtons[13]);
+        panel.add(mulButton);
+        panel.add(divButton);
         panel.add(numButtons[7]);
         panel.add(numButtons[8]);
         panel.add(numButtons[9]);
-        panel.add(numButtons[14]);
-        panel.add(numButtons[15]);
-        panel.add(subButton);
+        panel.add(modButton);
+        panel.add(squareButton);
+        panel.add(decButton);
         panel.add(numButtons[0]);
-        panel.add(addButton);
         panel.add(trigButtons[0]);
         panel.add(trigButtons[1]);
-        panel.add(funButtons[5]);
-        panel.add(clrButton);
-        panel.add(mulButton);
-        panel.add(divButton);
-        panel.add(trigButtons[2]);
-        panel.add(trigButtons[3]);
-        panel.add(decButton);
-        panel.add(htrigButtons[0]);
-        panel.add(htrigButtons[1]);
-        panel.add(trigButtons[4]);
-        panel.add(trigButtons[5]);
-        panel.add(htrigButtons[2]);
-        panel.add(htrigButtons[3]);
-        panel.add(htrigButtons[4]);
-        panel.add(trigButtons[6]);
-        panel.add(trigButtons[7]);
-        panel.add(htrigButtons[5]);
-        panel.add(htrigButtons[6]);
-        panel.add(htrigButtons[7]);
-        panel.add(trigButtons[8]);
-        panel.add(trigButtons[9]);
-        panel.add(htrigButtons[8]);
-        panel.add(htrigButtons[9]);
-        panel.add(htrigButtons[10]);
-        panel.add(trigButtons[10]);
-        panel.add(trigButtons[11]);
-        panel.add(htrigButtons[11]);
-
-        panel.add(exfunButtons[0]);
-        panel.add(exfunButtons[1]);
-        panel.add(exfunButtons[2]);
-        panel.add(exfunButtons[3]);
-        panel.add(exfunButtons[4]);
-        panel.add(exfunButtons[5]);
-        panel.add(exfunButtons[6]);
-        panel.add(exfunButtons[7]);
-        panel.add(exfunButtons[8]);
+        panel.add(cubeButton);
+        panel.add(tan);
+        panel.add(cosec);
+        panel.add(sec);
+        panel.add(cot);
+        panel.add(sqrtButton);
+        panel.add(numButtons[10]);
+        panel.add(asin);
+        panel.add(sinh);
+        panel.add(asinh);
+        panel.add(logButton);
+        panel.add(numButtons[11]);
+        panel.add(acos);
+        panel.add(cosh);
+        panel.add(acosh);
+        panel.add(expButton);
+        panel.add(numButtons[12]);
+        panel.add(atan);
+        panel.add(tanh);
+        panel.add(atanh);
+        panel.add(degButton);
+        panel.add(numButtons[13]);
+        panel.add(acosec);
+        panel.add(cosech);
+        panel.add(acosech);
+        panel.add(radButton);
+        panel.add(numButtons[14]);
+        panel.add(asec);
+        panel.add(sech);
+        panel.add(asech);
+        panel.add(factButton);
+        panel.add(numButtons[15]);
+        panel.add(acot);
+        panel.add(coth);
+        panel.add(acoth);
+        panel.add(absButton);
+        
 
 
 
@@ -329,14 +347,19 @@ public class Calculator implements ActionListener{
 
         frame.add(panel);
         frame.add(textfield);
+
         frame.add(decimal);
         frame.add(binary);
         frame.add(octal);
         frame.add(hexadecimal);
+        
+        frame.add(byte_type);
+        frame.add(short_type);
         frame.add(int_type);
         frame.add(float_type);
         frame.add(double_type);
         frame.add(long_type);
+        
         frame.add(panel);
         frame.add(equButton);
         frame.add(remButton);
@@ -357,16 +380,43 @@ public class Calculator implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        for (int i = 0; i < 10; i++) {
+        
+        for (int i = 0; i < numButtons.length; i++) {
             if (e.getSource() == numButtons[i]) {
-                textfield.setText(textfield.getText().concat(String.valueOf(i)));
-                if (datatype.getSelection().getActionCommand().equals("Double") || datatype.getSelection().getActionCommand().equals("Float")) {
-                    textfield.setText(isDoubleParsable(textfield.getText(), datatype.getSelection().getActionCommand()));
-                } else {
-                    textfield.setText(isIntegerParsable(textfield.getText(), datatype.getSelection().getActionCommand()));
+                String TEXT;
+                try {
+                    TEXT = textfield.getText().concat(Long.toHexString(i));
+                    if(numbase.getSelection().getActionCommand().equals("HexaDeciaml")) {
+                        TEXT = String.valueOf(Long.parseLong(TEXT, 16));
+                    } else if (numbase.getSelection().getActionCommand().equals("Octal")) {
+                        TEXT = String.valueOf(Long.parseLong(TEXT, 8));
+                    } else if (numbase.getSelection().getActionCommand().equals("Binary")) {
+                        TEXT = String.valueOf(Long.parseLong(TEXT, 2));
+                    }
+                    if (datatype.getSelection().getActionCommand().equals("Float") || (datatype.getSelection().getActionCommand().equals("Double"))) {
+                        if (textfield.getText().contains(".")){
+                            TEXT = isDoubleParsable(TEXT, datatype.getSelection().getActionCommand()) ;
+                        } else {
+                            TEXT = isIntegerParsable(TEXT, datatype.getSelection().getActionCommand()) ;
+                        }
+                    } else {
+                        TEXT = isIntegerParsable(TEXT, datatype.getSelection().getActionCommand()) ;
+                    }
+                    if(numbase.getSelection().getActionCommand().equals("HexaDecimal")) {
+                        TEXT = Long.toHexString(Long.parseLong(TEXT));
+                    } else if (numbase.getSelection().getActionCommand().equals("Octal")) {
+                        TEXT = Long.toOctalString(Long.parseLong(TEXT));
+                    } else if (numbase.getSelection().getActionCommand().equals("Binary")) {
+                        TEXT = Long.toBinaryString(Long.parseLong(TEXT));
+                    }
+                } catch (NumberFormatException ERROR) {
+                    TEXT = "NumberFormatException";
                 }
+            textfield.setText(TEXT);
             }
         }
+
+
         if (e.getSource() == decButton) {
             textfield.setText(textfield.getText().concat("."));
         }
@@ -376,7 +426,17 @@ public class Calculator implements ActionListener{
             textfield.setText("");
         }
         if (e.getSource() == subButton) {
-            num1 = Double.parseDouble(textfield.getText());
+            
+            if(numbase.getSelection().getActionCommand().equals("HexaDecimal")) {
+                num1 = Long.parseLong(textfield.getText(), 16);
+            } else if (numbase.getSelection().getActionCommand().equals("Octal")) {
+                num1 = Long.parseLong(textfield.getText(), 8);
+            } else if (numbase.getSelection().getActionCommand().equals("Binary")) {
+                num1 = Long.parseLong(textfield.getText(), 2);
+            } else {
+                num1 = Double.parseDouble(textfield.getText());
+            }
+
             operator = '-';
             textfield.setText("");
         }
@@ -390,41 +450,75 @@ public class Calculator implements ActionListener{
             operator = '/';
             textfield.setText("");
         }
-        if (e.getSource() == remButton) {
+        if (e.getSource() == modButton) {
             num1 = Double.parseDouble(textfield.getText());
             operator = '%';
             textfield.setText("");
         }
         if (e.getSource() == equButton) {
-            num2 = Double.parseDouble(textfield.getText());
-
-            switch (operator) {
-                case '+':
-                    result = num1 + num2;
-                    break;
-                case '-':
-                    result = num1 - num2;
-                    break;
-                case '*':
-                    result = num1 * num2;
-                    break;
-                case '/':
-                    result = num1 / num2;
-                    break;
-                case '%':
-                    result = num1 % num2;
-                    break;
-            }
-
-            if (datatype.getSelection().getActionCommand().equals("Double") || datatype.getSelection().getActionCommand().equals("Float")) {
-                textfield.setText(isDoubleParsable(String.valueOf(result), datatype.getSelection().getActionCommand()));
+            if(numbase.getSelection().getActionCommand().equals("HexaDecimal")) {
+                num1 = Long.parseLong(String.valueOf((long) num1), 16);
+                num2 = Long.parseLong(textfield.getText(), 16);
+            } else if (numbase.getSelection().getActionCommand().equals("Octal")) {
+                num1 = Long.parseLong(String.valueOf((long) num1), 8);
+                num2 = Long.parseLong(textfield.getText(), 8);
+            } else if (numbase.getSelection().getActionCommand().equals("Binary")) {
+                num1 = Long.parseLong(String.valueOf((long) num1), 2);
+                num2 = Long.parseLong(textfield.getText(), 2);
             } else {
-                textfield.setText(isIntegerParsable(String.valueOf((long) result), datatype.getSelection().getActionCommand()));
+                num2 = Double.parseDouble(textfield.getText());
             }
-            result = num1;
+            try {
+                switch (operator) {
+                    case '+':
+                        result = num1 + num2;
+                        break;
+                    case '-':
+                        result = num1 - num2;
+                        break;
+                    case '*':
+                        result = num1 * num2;
+                        break;
+                    case '/':
+                        result = num1 / num2;
+                        break;
+                    case '%':
+                        result = num1 % num2;
+                        break;
+                }
+
+                if (datatype.getSelection().getActionCommand().equals("Float") || (datatype.getSelection().getActionCommand().equals("Double"))) {
+                    if (textfield.getText().contains(".")){
+                        textfield.setText(isDoubleParsable(String.valueOf(result), datatype.getSelection().getActionCommand()) );
+                    } else {
+                        textfield.setText(isIntegerParsable(String.valueOf((long) result), datatype.getSelection().getActionCommand()) );
+                    }
+                } else {
+                    textfield.setText(isIntegerParsable(String.valueOf((long) result), datatype.getSelection().getActionCommand()) );
+                }
+
+                if(numbase.getSelection().getActionCommand().equals("HexaDecimal")) {
+                    textfield.setText(Long.toHexString((long)result));
+                } else if (numbase.getSelection().getActionCommand().equals("Octal")) {
+                    textfield.setText(Long.toOctalString((long)result));
+                } else if (numbase.getSelection().getActionCommand().equals("Binary")) {
+                    textfield.setText(Long.toBinaryString((long)result));
+                }
+
+                num1 = result;
+            } catch (NumberFormatException error) {
+            textfield.setText("NumberFormatException");
+            }
 
 
         }
+
+        // if (e.getSource() == negButton){
+        //     double temp = Double.parseDouble(textfield.getText());
+        //     temp *= -1;
+        //     textfield.setText(String.valueOf(temp));
+
+        
         if (e.getSource() == clrButton) {
             textfield.setText("");
         }
@@ -435,37 +529,56 @@ public class Calculator implements ActionListener{
                 textfield.setText(textfield.getText() + string.charAt(i));
             }
         }
+
+
         if (e.getSource() == squareButton) {
             num1 = Double.parseDouble(textfield.getText());
             result = Math.pow(num1, 2);
-            if (datatype.getSelection().getActionCommand().equals("Double") || datatype.getSelection().getActionCommand().equals("Float")) {
-                textfield.setText(isDoubleParsable(String.valueOf(result), datatype.getSelection().getActionCommand()));
+            if (datatype.getSelection().getActionCommand().equals("Float") || (datatype.getSelection().getActionCommand().equals("Double"))) {
+                if (textfield.getText().contains(".")){
+                    textfield.setText(isDoubleParsable(String.valueOf(result), datatype.getSelection().getActionCommand()) );
+                } else {
+                    textfield.setText(isIntegerParsable(String.valueOf((long) result), datatype.getSelection().getActionCommand()) );
+                }
             } else {
-                textfield.setText(isIntegerParsable(String.valueOf((long) result), datatype.getSelection().getActionCommand()));
+                textfield.setText(isIntegerParsable(String.valueOf((long) result), datatype.getSelection().getActionCommand()) );
             }
             num1 = result;
         }
+
+
         if (e.getSource() == sqrtButton) {
             num1 = Double.parseDouble(textfield.getText());
             result = Math.sqrt(num1);
-            if (datatype.getSelection().getActionCommand().equals("Double") || datatype.getSelection().getActionCommand().equals("Float")) {
-                textfield.setText(isDoubleParsable(String.valueOf(result), datatype.getSelection().getActionCommand()));
+            if (datatype.getSelection().getActionCommand().equals("Float") || (datatype.getSelection().getActionCommand().equals("Double"))) {
+                if (textfield.getText().contains(".")){
+                    textfield.setText(isDoubleParsable(String.valueOf(result), datatype.getSelection().getActionCommand()) );
+                } else {
+                    textfield.setText(isIntegerParsable(String.valueOf((long) result), datatype.getSelection().getActionCommand()) );
+                }
             } else {
-                textfield.setText(isIntegerParsable(String.valueOf((long) result), datatype.getSelection().getActionCommand()));
+                textfield.setText(isIntegerParsable(String.valueOf((long) result), datatype.getSelection().getActionCommand()) );
             }
             num1 = result;
         }
         if (e.getSource() == cubeButton) {
             num1 = Double.parseDouble(textfield.getText());
             result = Math.pow(num1, 3);
-            if (datatype.getSelection().getActionCommand().equals("Double") || datatype.getSelection().getActionCommand().equals("Float")) {
-                textfield.setText(isDoubleParsable(String.valueOf(result), datatype.getSelection().getActionCommand()));
+            if (datatype.getSelection().getActionCommand().equals("Float") || (datatype.getSelection().getActionCommand().equals("Double"))) {
+                if (textfield.getText().contains(".")){
+                    textfield.setText(isDoubleParsable(String.valueOf(result), datatype.getSelection().getActionCommand()) );
+                } else {
+                    textfield.setText(isIntegerParsable(String.valueOf((long) result), datatype.getSelection().getActionCommand()) );
+                }
             } else {
-                textfield.setText(isIntegerParsable(String.valueOf((long) result), datatype.getSelection().getActionCommand()));
+                textfield.setText(isIntegerParsable(String.valueOf((long) result), datatype.getSelection().getActionCommand()) );
             }
             num1 = result;
         }
 
+
+
+        // LETS REMOVE EXTRA BUTTONS FOR A SPECIFIC NUMBER BASE.
         if (numbase.getSelection().getActionCommand().equals("HexaDecimal")) {
             // DEC Number
             for (int i = 0; i < numButtons.length; i++) {
@@ -475,9 +588,10 @@ public class Calculator implements ActionListener{
             for (int i = 10; i < numButtons.length; i++) {
                 numButtons[i].setEnabled(true);
             }
+
             for (int i = 1; i < funButtons.length; i++) {
-                funButtons[0].setEnabled(false);
                 funButtons[i].setEnabled(true);
+                
             }
             for (int i = 0; i < trigButtons.length; i++) {
                 trigButtons[i].setEnabled(false);
@@ -489,6 +603,8 @@ public class Calculator implements ActionListener{
                 exfunButtons[i].setEnabled(false);
             }
 
+            byte_type.setEnabled(true);
+            short_type.setEnabled(true);
             int_type.setEnabled(true);
             long_type.setEnabled(true);
             float_type.setEnabled(false);
@@ -515,6 +631,9 @@ public class Calculator implements ActionListener{
             for (int i = 0; i < exfunButtons.length; i++) {
                 exfunButtons[i].setEnabled(true);
             }
+
+            byte_type.setEnabled(true);
+            short_type.setEnabled(true);
             int_type.setEnabled(true);
             long_type.setEnabled(true);
             float_type.setEnabled(true);
@@ -545,6 +664,9 @@ public class Calculator implements ActionListener{
             for (int i = 0; i < exfunButtons.length; i++) {
                 exfunButtons[i].setEnabled(false);
             }
+
+            byte_type.setEnabled(true);
+            short_type.setEnabled(true);
             int_type.setEnabled(true);
             long_type.setEnabled(true);
             float_type.setEnabled(false);
@@ -575,6 +697,9 @@ public class Calculator implements ActionListener{
             for (int i = 0; i < exfunButtons.length; i++) {
                 exfunButtons[i].setEnabled(false);
             }
+
+            byte_type.setEnabled(true);
+            short_type.setEnabled(true);
             int_type.setEnabled(true);
             long_type.setEnabled(true);
             float_type.setEnabled(false);
@@ -585,33 +710,64 @@ public class Calculator implements ActionListener{
         if (e.getSource() == logButton) {
             num1 = Double.parseDouble(textfield.getText());
             result = Math.log(num1);
-            if (datatype.getSelection().getActionCommand().equals("Double") || datatype.getSelection().getActionCommand().equals("Float")) {
-                textfield.setText(isDoubleParsable(String.valueOf(result), datatype.getSelection().getActionCommand()));
+            if (datatype.getSelection().getActionCommand().equals("Float") || (datatype.getSelection().getActionCommand().equals("Double"))) {
+                if (textfield.getText().contains(".")){
+                    textfield.setText(isDoubleParsable(String.valueOf(result), datatype.getSelection().getActionCommand()) );
+                } else {
+                    textfield.setText(isIntegerParsable(String.valueOf((long) result), datatype.getSelection().getActionCommand()) );
+                }
             } else {
-                textfield.setText(isIntegerParsable(String.valueOf((long) result), datatype.getSelection().getActionCommand()));
+                textfield.setText(isIntegerParsable(String.valueOf((long) result), datatype.getSelection().getActionCommand()) );
             }
             num1 = result;
         }
+
+
         if (e.getSource() == absButton) {
             num1 = Double.parseDouble(textfield.getText());
             result = Math.abs(num1);
-            if (datatype.getSelection().getActionCommand().equals("Double") || datatype.getSelection().getActionCommand().equals("Float")) {
+            if (datatype.getSelection().getActionCommand().equals("Float") || (datatype.getSelection().getActionCommand().equals("Double"))) {
+                if (textfield.getText().contains(".")){
+                    textfield.setText(isDoubleParsable(String.valueOf(result), datatype.getSelection().getActionCommand()) );
+                } else {
+                    textfield.setText(isIntegerParsable(String.valueOf((long) result), datatype.getSelection().getActionCommand()) );
+                }
+            } else {
+                textfield.setText(isIntegerParsable(String.valueOf((long) result), datatype.getSelection().getActionCommand()) );
+            }
+            num1 = result;
+        }
+
+        if (e.getSource() == factButton) {
+			result = 1;
+            num1 = Double.parseDouble(textfield.getText());
+            for (int factor = 2; factor <= num1; factor++) {
+                result *= factor;
+            }
+            if (datatype.getSelection().getActionCommand().equals("Double") || datatype.getSelection().getActionCommand().equals("Float")){
                 textfield.setText(isDoubleParsable(String.valueOf(result), datatype.getSelection().getActionCommand()));
             } else {
                 textfield.setText(isIntegerParsable(String.valueOf((long) result), datatype.getSelection().getActionCommand()));
             }
             num1 = result;
-        }
+		}
+
         if (e.getSource() == expButton) {
             num1 = Double.parseDouble(textfield.getText());
             result = Math.exp(num1);
-            if (datatype.getSelection().getActionCommand().equals("Double") || datatype.getSelection().getActionCommand().equals("Float")) {
-                textfield.setText(isDoubleParsable(String.valueOf(result), datatype.getSelection().getActionCommand()));
+            if (datatype.getSelection().getActionCommand().equals("Float") || (datatype.getSelection().getActionCommand().equals("Double"))) {
+                if (textfield.getText().contains(".")){
+                    textfield.setText(isDoubleParsable(String.valueOf(result), datatype.getSelection().getActionCommand()) );
+                } else {
+                    textfield.setText(isIntegerParsable(String.valueOf((long) result), datatype.getSelection().getActionCommand()) );
+                }
             } else {
-                textfield.setText(isIntegerParsable(String.valueOf((long) result), datatype.getSelection().getActionCommand()));
+                textfield.setText(isIntegerParsable(String.valueOf((long) result), datatype.getSelection().getActionCommand()) );
             }
             num1 = result;
         }
+
+
         if (e.getSource() == degButton) {
             num1 = Double.parseDouble(textfield.getText());
             result = Math.toDegrees(num1);
@@ -890,10 +1046,14 @@ public class Calculator implements ActionListener{
                 number = Integer.toString(Integer.parseInt(number));
             } else if (type.equals("Long")) {
                 number = Double.toString(Double.parseDouble(number));
+            } else if (type.equals("Double")){
+                number = Double.toString(Double.parseDouble(number));
+                }
+            } catch (java.lang.NumberFormatException e){ // In case, NumberFormatException (Not Parsable)
+                number = "NumberFormatException";
             }
-        } catch (java.lang.NumberFormatException e){ // In case, NumberFormatException (Not Parsable)
-            number = "NumberFormatException";
-        }
+            
+        
 
         // returning number string
         return number;
